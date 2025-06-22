@@ -1,0 +1,61 @@
+import java.util.Scanner; // Chamando o Scanner
+
+public class subRotinas {
+    public static void main(String[] args) { // Procedimento de cadastro do Aluno
+        Scanner sc = new Scanner(System.in); //Novo nome para o Scanner
+
+        double[] nota = new double[3]; // Utilizando um vetor para guardar mais de uma informação
+
+        System.out.println("=====================");
+        System.out.println("  Cadastrar o Aluno");
+        System.out.println("=====================");
+
+        System.out.print("Digite o nome do aluno: ");
+        String nome = sc.nextLine();
+
+        for(int i = 0; i < 3; i++){ // Coletar as notas do aluno
+            System.out.print("Digite a "+(i+1)+"º nota: ");
+            nota[i] = sc.nextDouble();
+        }
+
+
+        double media = Media(nota); // Chamando o procedimento Media
+        String situacao = Situacao(media); // Chamando o procedimento Situação
+
+        RelatorioFinal(nome,media,situacao);
+    }
+    // Procedimento que calculará a Média do aluno
+    public static double Media(double[] a){
+
+        double media = (a[0]+a[1]+a[2])/ 3;
+
+        return media;
+
+    }
+    //Procedimento que calculará se o aluno foi aprovado ou não
+    public static String Situacao(double media){
+
+        String situacao = "";
+        if(media >= 7){
+            situacao = "Aprovado";
+        }
+        else{
+            situacao = "Reprovado";
+        }
+
+        return situacao;
+
+
+    }
+    //Relatório final
+    public static void RelatorioFinal(String nome, double media, String situacao){
+
+        System.out.println("=======================");
+        System.out.println("   Relátorio do "+nome);
+        System.out.println("=======================");
+
+        System.out.println("Aluno: "+nome);
+        System.out.println("Media: "+ media);
+        System.out.println("Situacao: "+ situacao);
+    }
+}
